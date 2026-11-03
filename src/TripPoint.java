@@ -38,3 +38,25 @@ public class TripPoint {
 	public static double haversineDistance(TripPoint a, TripPoint b) {
 		//Earth radius in km
 		final double R = 6371.0;
+				//convert degree to radians since Java trig functions expect rad inputs
+		double lat1 = Math.toRadians(a.getLat());
+		double lon1 = Math.toRadians(a.getLon());
+
+		double lat2 = Math.toRadians(b.getLat());
+		double lon2 = Math.toRadians(b.getLon());
+		
+		//calculating change in lat and lon
+		double deltaLat = lat2 - lat1;
+		double deltaLon = lon2 - lon1;
+		
+		//implementing harversine formula
+		double h = Math.pow(Math.sin(deltaLat / 2), 2)
+				+ Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(deltaLon / 2), 2);
+		//get angular distance
+		double c = 2 * Math.atan2(Math.sqrt(h), Math.sqrt(1 - h));
+		
+		//angular distance in km
+		return R * c;
+	}
+	
+	// avr speed = distance/time units km/h

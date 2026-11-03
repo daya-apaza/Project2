@@ -58,4 +58,16 @@ public class TripPoint {
 		//angular distance in km
 		return R * c;
 	}
-	
+		// avr speed = distance/time units km/h
+	public static double avgSpeed(TripPoint a, TripPoint b) {
+		double distance = haversineDistance(a, b);
+		
+		//use absolute to get positive result
+		double minutes = Math.abs(a.getTime() - b.getTime());
+
+		double hours = minutes / 60.0;
+
+		return distance / hours;
+	}
+
+	//solve for sum of distance

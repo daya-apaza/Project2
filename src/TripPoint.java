@@ -59,4 +59,3 @@ public class TripPoint {
 		return R * c;
 	}
 	
-	// avr speed = distance/time units km/h

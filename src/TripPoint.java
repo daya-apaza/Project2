@@ -71,3 +71,24 @@ public class TripPoint {
 	}
 
 	//solve for sum of distance
+		public static double totalDistance() {
+		double total = 0;
+
+		for (int i = 0; i < trip.size() - 1; i++) {
+
+			TripPoint a = trip.get(i);
+			TripPoint b = trip.get(i + 1);
+
+			total += haversineDistance(a, b);
+		}
+
+		return total;
+	}
+	
+	//total time in hours
+	public static double totalTime() {
+		int totalMinutes = trip.get(trip.size() - 1).getTime();
+		return totalMinutes / 60.0;
+	}
+	
+

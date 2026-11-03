@@ -91,4 +91,3 @@ public class TripPoint {
 		return totalMinutes / 60.0;
 	}
 	
-

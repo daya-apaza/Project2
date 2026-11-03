@@ -91,3 +91,31 @@ public class TripPoint {
 		return totalMinutes / 60.0;
 	}
 	
+	//read data from triplog.csv to the trip ArrayList.
+	public static void readFile(String filename) {
+		try {
+			Scanner fileScanner = new Scanner(new File(filename));
+
+			fileScanner.nextLine();
+
+			while (fileScanner.hasNextLine()) {
+				String line = fileScanner.nextLine();
+
+				String[] data = line.split(",");
+
+				int time = Integer.parseInt(data[0]);
+				double latitude = Double.parseDouble(data[1]);
+				double longitude = Double.parseDouble(data[2]);
+
+				TripPoint point = new TripPoint(time, latitude, longitude);
+
+				trip.add(point);
+			}
+
+			fileScanner.close();
+
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found.");
+		}
+	}
+}
